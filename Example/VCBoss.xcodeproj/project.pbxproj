@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
-		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
+		607FACD81AFB9204008FA782 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ChildViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		C77028F8288BB055889DCA9A /* Pods_VCBoss_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F3D362AD3F3291D0F650EF /* Pods_VCBoss_Example.framework */; };
 		EACD8D3D08A09DABFC98A539 /* Pods_VCBoss_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E59321E6C5977D1D0B1260 /* Pods_VCBoss_Tests.framework */; };
+		F71D9DD41FE03F95003D5E7E /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D9DD61FE03F95003D5E7E /* SnapKit.framework */; };
+		F71D9DD51FE03F95003D5E7E /* VCBoss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D9DD71FE03F95003D5E7E /* VCBoss.framework */; };
+		F71D9DDB1FE043DC003D5E7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D9DDA1FE043DC003D5E7E /* UIKit.framework */; };
+		F7751BDB1FE04A2F00EC2560 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7751BDA1FE04A2F00EC2560 /* ParentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,8 +35,7 @@
 		607FACD01AFB9204008FA782 /* VCBoss_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VCBoss_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* ChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* VCBoss_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VCBoss_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,12 +43,16 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		9027EF27432222C13E4E26CF /* Pods-VCBoss_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VCBoss_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-VCBoss_Example/Pods-VCBoss_Example.release.xcconfig"; sourceTree = "<group>"; };
 		92410A1B2BC349DC62C93D12 /* Pods-VCBoss_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VCBoss_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VCBoss_Tests/Pods-VCBoss_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		9461B013F6D3348DA2B42A7B /* VCBoss.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = VCBoss.podspec; path = ../VCBoss.podspec; sourceTree = "<group>"; };
-		B6C4BCF1E3FE54F8761146E8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		9461B013F6D3348DA2B42A7B /* VCBoss.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VCBoss.podspec; path = ../VCBoss.podspec; sourceTree = "<group>"; };
+		B6C4BCF1E3FE54F8761146E8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		D1E59321E6C5977D1D0B1260 /* Pods_VCBoss_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VCBoss_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E62AEF4F2A233153F8F9DC49 /* Pods-VCBoss_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VCBoss_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VCBoss_Example/Pods-VCBoss_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		F046ACF70938EF7F4E122D52 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		F046ACF70938EF7F4E122D52 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F0F3D362AD3F3291D0F650EF /* Pods_VCBoss_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VCBoss_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F71D9DD61FE03F95003D5E7E /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F71D9DD71FE03F95003D5E7E /* VCBoss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VCBoss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F71D9DDA1FE043DC003D5E7E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F7751BDA1FE04A2F00EC2560 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F71D9DDB1FE043DC003D5E7E /* UIKit.framework in Frameworks */,
+				F71D9DD41FE03F95003D5E7E /* SnapKit.framework in Frameworks */,
+				F71D9DD51FE03F95003D5E7E /* VCBoss.framework in Frameworks */,
 				C77028F8288BB055889DCA9A /* Pods_VCBoss_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,11 +103,11 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				607FACD71AFB9204008FA782 /* ChildViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				F7751BDA1FE04A2F00EC2560 /* ParentViewController.swift */,
 			);
 			name = "Example for VCBoss";
 			path = VCBoss;
@@ -142,6 +151,9 @@
 		E8126D51C41442E482534FC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F71D9DDA1FE043DC003D5E7E /* UIKit.framework */,
+				F71D9DD61FE03F95003D5E7E /* SnapKit.framework */,
+				F71D9DD71FE03F95003D5E7E /* VCBoss.framework */,
 				F0F3D362AD3F3291D0F650EF /* Pods_VCBoss_Example.framework */,
 				D1E59321E6C5977D1D0B1260 /* Pods_VCBoss_Tests.framework */,
 			);
@@ -215,10 +227,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 6FUGF49KXB;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 6FUGF49KXB;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -248,7 +262,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -319,10 +332,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-VCBoss_Example/Pods-VCBoss_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/VCBoss/VCBoss.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VCBoss.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,8 +394,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				607FACD81AFB9204008FA782 /* ChildViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				F7751BDB1FE04A2F00EC2560 /* ParentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,14 +419,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				607FACDA1AFB9204008FA782 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -526,10 +534,11 @@
 			baseConfigurationReference = E62AEF4F2A233153F8F9DC49 /* Pods-VCBoss_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6FUGF49KXB;
 				INFOPLIST_FILE = VCBoss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.curiosityio.VCBoss-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -541,10 +550,11 @@
 			baseConfigurationReference = 9027EF27432222C13E4E26CF /* Pods-VCBoss_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6FUGF49KXB;
 				INFOPLIST_FILE = VCBoss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.curiosityio.VCBoss-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -555,6 +565,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 92410A1B2BC349DC62C93D12 /* Pods-VCBoss_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 6FUGF49KXB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -576,6 +587,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 11DC9BEAADD1DBAAE0871618 /* Pods-VCBoss_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 6FUGF49KXB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

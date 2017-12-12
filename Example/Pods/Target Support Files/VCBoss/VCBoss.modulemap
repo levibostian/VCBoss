@@ -1,0 +1,6 @@
+framework module VCBoss {
+  umbrella header "VCBoss-umbrella.h"
+
+  export *
+  module * { export * }
+}

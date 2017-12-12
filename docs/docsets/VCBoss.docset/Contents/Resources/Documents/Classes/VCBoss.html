@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>VCBoss Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/VCBoss" class="dashAnchor"></a>
+    <a title="VCBoss Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">VCBoss Docs</a> (91% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">VCBoss Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        VCBoss Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/VCBoss.html">VCBoss</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/VCBossError.html">VCBossError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>VCBoss</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">VCBoss</span></code></pre>
+
+                </div>
+              </div>
+            <p>Class used by a UIViewController to manage presenting and dismissing of UIViewControllers in a safe way. iOS throws errors if you try to call <code>self.present()</code> inside of a UIViewController when another UIViewController is already being shown. Replace all of your existing <code>self.present()</code> calls with using VCBoss and be safe knowing only 1 ViewController will be shown at a time.</p>
+
+<p>Note: This class <em>does not</em> know about any UIViewControllers that you have already shown in it with <code>self.present()</code>. Make sure to place <em>all</em> existing <code>self.present()</code> calls with using VCBoss to assert you will not have any issues.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6VCBossAAC20parentViewControllerSo06UIViewD0CSgXwv"></a>
+                    <a name="//apple_ref/swift/Property/parentViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6VCBossAAC20parentViewControllerSo06UIViewD0CSgXwv">parentViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">parentViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">?</span> <span class="c1">// The UIViewController doing the presenting. You can think of this as the "parent" UIViewController and all the UIViewControllers presented as the "children".</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6VCBossAAC8instanceABSo16UIViewControllerC3for_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/instance(for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6VCBossAAC8instanceABSo16UIViewControllerC3for_tFZ">instance(for:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use to get instance of VCBoss for UIViewController doing all of the presenting of UIViewControllers. You can think of this as the <q>parenet</q> UIViewController showing <q>children</q> UIViewController&rsquo;s modally.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">instance</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">VCBoss</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6VCBossAAC25numViewControllersInStackSiv"></a>
+                    <a name="//apple_ref/swift/Property/numViewControllersInStack" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6VCBossAAC25numViewControllersInStackSiv">numViewControllersInStack</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If you are interested to see how many UIViewControllers are in the stack of UIViewControllers to show modally.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">numViewControllersInStack</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6VCBossAAC7presentySo16UIViewControllerC_Sb8animatedyycSg10completionSb5forcetF"></a>
+                    <a name="//apple_ref/swift/Method/present(_:animated:completion:force:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6VCBossAAC7presentySo16UIViewControllerC_Sb8animatedyycSg10completionSb5forcetF">present(_:animated:completion:force:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Present this UIViewController now if no other UIViewController is presented, or show it in the future when it&rsquo;s turn is next.</p>
+
+<p>@param force: Bool This param is used to say this UIViewController needs to be presented right now. Dismiss the UIViewController currently shown (if there is one), show this new UIViewController, then present the one I replaced again. Default: false</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">present</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewControllerToPresent</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?,</span> <span class="nv">force</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6VCBossAAC32presentOnlyIfNothingAlreadyShownySo16UIViewControllerC_Sb8animatedyycSg10completiontF"></a>
+                    <a name="//apple_ref/swift/Method/presentOnlyIfNothingAlreadyShown(_:animated:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6VCBossAAC32presentOnlyIfNothingAlreadyShownySo16UIViewControllerC_Sb8animatedyycSg10completiontF">presentOnlyIfNothingAlreadyShown(_:animated:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If another UIViewController is already being shown, ignore showing this one. Else, present it.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">presentOnlyIfNothingAlreadyShown</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewControllerToPresent</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6VCBossAAC7replaceySo16UIViewControllerC4with_Sb8animatedyycSg10completiontF"></a>
+                    <a name="//apple_ref/swift/Method/replace(with:animated:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6VCBossAAC7replaceySo16UIViewControllerC4with_Sb8animatedyycSg10completiontF">replace(with:animated:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Take the currently shown ViewController, dismiss it, and force show this one immediately after.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replace</span><span class="p">(</span><span class="n">with</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6VCBossAAC7dismissySo16UIViewControllerC_Sb8animatedyycSg10completiontKF"></a>
+                    <a name="//apple_ref/swift/Method/dismiss(_:animated:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6VCBossAAC7dismissySo16UIViewControllerC_Sb8animatedyycSg10completiontKF">dismiss(_:animated:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Dismiss this UIViewController given. Then, present the next one in line if there is one.</p>
+
+<p><code>dismissCompletion</code> and the completion handler given when this ViewController to dismiss was presented will both be called.</p>
+
+<p>If the viewController was never actually presented, an error will be thrown.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">dismiss</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/levibostian/VCBoss" target="_blank" rel="external">Levi Bostian</a>. All rights reserved. (Last updated: 2017-12-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

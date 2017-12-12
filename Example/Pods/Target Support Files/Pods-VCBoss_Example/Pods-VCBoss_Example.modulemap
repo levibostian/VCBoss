@@ -1,0 +1,6 @@
+framework module Pods_VCBoss_Example {
+  umbrella header "Pods-VCBoss_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
