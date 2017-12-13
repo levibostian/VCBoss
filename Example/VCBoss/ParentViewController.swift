@@ -21,6 +21,15 @@ class ParentViewController: UIViewController {
         return view
     }()
     
+    fileprivate let presentNewViewControllerNotUsingVCBossButton: UIButton = {
+        let view = UIButton()
+        view.setTitle("Present new ViewController *not* using VCBoss", for: UIControlState.normal)
+        view.setTitleColor(UIColor.red, for: UIControlState.normal)
+        view.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        view.titleLabel?.textAlignment = NSTextAlignment.center
+        return view
+    }()
+    
     fileprivate let viewsStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
@@ -33,6 +42,7 @@ class ParentViewController: UIViewController {
         super.viewDidLoad()
         
         viewsStackView.addArrangedSubview(presentNewViewControllerButton)
+        viewsStackView.addArrangedSubview(presentNewViewControllerNotUsingVCBossButton)
         
         self.view.addSubview(viewsStackView)
         
@@ -43,6 +53,7 @@ class ParentViewController: UIViewController {
     
     fileprivate func setupViews() {
         presentNewViewControllerButton.addTarget(self, action: #selector(ParentViewController.presentNewViewControllerPressed(_:)), for: UIControlEvents.touchUpInside)
+        presentNewViewControllerNotUsingVCBossButton.addTarget(self, action: #selector(ParentViewController.presentNewViewControllerNotUsingVCBossPressed(_:)), for: UIControlEvents.touchUpInside)
     }
     
     @objc func presentNewViewControllerPressed(_ sender: Any) {
@@ -50,6 +61,13 @@ class ParentViewController: UIViewController {
         newViewController.delegate = self
         
         self.vcboss.present(newViewController, animated: true, completion: nil)
+    }
+    
+    @objc func presentNewViewControllerNotUsingVCBossPressed(_ sender: Any) {
+        let newViewController = ChildViewController()
+        newViewController.delegate = self
+        
+        self.present(newViewController, animated: true, completion: nil)
     }
     
     override func updateViewConstraints() {
@@ -69,12 +87,24 @@ class ParentViewController: UIViewController {
 
 extension ParentViewController: ChildViewControllerDelegate {
     
-    func dismissViewController(sender: UIViewController) {
+    func dismissViewControllerUsingPresentingViewController(sender: UIViewController) {
         try! self.vcboss.dismiss(sender, animated: true, completion: nil)
     }
     
+    func dismissViewControllerUsingPresentedViewController(sender: UIViewController) {
+        try! sender.vcboss.dismiss(animated: true, completion: nil)
+    }
+    
+    func dismissViewControllerUsingPresentedViewControllerNotUsingVCBoss(sender: UIViewController) {
+        sender.dismiss(animated: true, completion: nil)
+    }
+    
+    func dismissAllViewControllers(sender: UIViewController) {
+        try! self.vcboss.dismissAll(animated: true, completion: nil)
+    }
+    
     func getNumberViewControllersInStack() -> Int {
-        return self.vcboss.numViewControllersInStack
+        return self.vcboss.numViewControllersPresenting
     }    
     
     func replaceWithNewViewController(sender: UIViewController) {
