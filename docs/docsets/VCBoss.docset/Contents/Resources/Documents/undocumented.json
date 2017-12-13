@@ -1,12 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Users/levibostian/code/VCBoss/VCBoss/Classes/VCBoss.swift",
-      "line": 34,
-      "symbol": "VCBoss.parentViewController",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Users/levibostian/code/VCBoss"
 }
