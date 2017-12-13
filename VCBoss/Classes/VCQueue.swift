@@ -9,16 +9,26 @@ import Foundation
 
 struct QueueItem {
     var viewControllerToPresent: UIViewController
-    var animated: Bool
-    var completion: (() -> Void)?
+    var animated: Bool = true
+    var completion: (() -> Void)? = nil
 }
 
 internal class VCQueue {
     
     private var queue: [QueueItem] = []
     
-    func isEmpty() -> Bool {
-        return queue.isEmpty
+    func removeAllBefore(viewController: UIViewController) {
+        for (index, queueItem) in self.queue.enumerated() {
+            if queueItem.viewControllerToPresent.hashValue == viewController.hashValue {
+                return
+            } else {
+                self.queue.remove(at: index)
+            }
+        }
+    }
+    
+    func clear() {
+        queue.removeAll()
     }
     
     internal var count: Int {
@@ -28,7 +38,7 @@ internal class VCQueue {
     }
     
     func isFirst(_ viewController: UIViewController) -> Bool {
-        if isEmpty() {
+        if queue.isEmpty {
             return false
         }
         
@@ -52,16 +62,7 @@ internal class VCQueue {
             }
         }
         return nil
-    }
-    
-    func contains(_ viewController: UIViewController) -> Bool {
-        for (index, queueItem) in self.queue.enumerated() {
-            if queueItem.viewControllerToPresent.hashValue == viewController.hashValue {
-                return true
-            }
-        }
-        return false
-    }
+    }        
     
     func put(_ queueItem: QueueItem, forceInsertFirst: Bool = false) {
         if forceInsertFirst {

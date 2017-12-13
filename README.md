@@ -1,6 +1,6 @@
 # VCBoss
 
-Present UIViewControllers modally in an easy and safe way. No more `Fatal Exception: NSInvalidArgumentException Application tried to present modally an active controller ...` errors. Easily present, dismiss, replace, and swap UIViewControllers presented modally in a parent UIViewController.
+Present UIViewControllers modally in an easy and safe way. No more `Fatal Exception: NSInvalidArgumentException Application tried to present modally an active controller ...` errors. Easily present, dismiss, replace, and swap UIViewControllers presented modally in a presenting UIViewController.
 
 ![Swift 4.0.x](https://img.shields.io/badge/Swift-4.0.x-orange.svg)
 
@@ -12,43 +12,104 @@ Present UIViewControllers modally in an easy and safe way. No more `Fatal Except
 
 # Why?
 
-In my iOS apps, I enjoy presenting, dismissing, replacing, swapping in and out UIViewControllers modally. It's a very nice touch to present subviews in a main UI for a user to interact with.
+In my iOS apps, I enjoy presenting, dismissing, replacing, swapping in and out UIViewControllers modally. It's a nice way to present subviews in a main UI for a user to interact with.
 
-However, managing all of those UIViewControllers is risky business. What if I am already showing a user a UIViewController and I want to display another one after that? What if I want to replace the currently shown UIViewController with a new one after the user presses the "Accept" button? There are many use cases that VCBoss can be used for. Managing all of these use cases becomes a pain very quickly.
+However, managing all of those presented UIViewControllers is risky business. What if I am already showing a user a UIViewController and I want to display another one after that? What if I want to replace the currently shown UIViewController with a new one after the user presses an "Accept" button? There are many use cases that VCBoss can be used for. Managing all of these use cases manually in a presenting UIViewController becomes a pain very quickly.
 
 # Features
 
-* Present a UIViewController modally in the stack to be shown immediately if no other UIViewController is presented modally, or appended at the end to be shown eventually.
-* Present a UIViewController immediately by dismissing a currently shown UIViewController if there is one. Do not worry, the UIViewController that gets dismissed, if there is one, will be presented after the forced UIViewController gets dismissed.
+VCBoss comes with the basic functionality you're already used to:
+
+* Present a UIViewController modally.
+* Dismiss a UIViewController that was presented modally.
+
+Pretty simple, right? However, here is where VCBoss makes me happy 😄:
+
+* Present a UIViewController modally immediately (if the presenting UIViewController is not presenting a UIViewController already) or add to the end of the stack to be presented in the future.
+* Present a UIViewController forcefully by dismissing a currently shown UIViewController if there is one and then show the new UIViewController. Do not worry, the UIViewController that gets dismissed, if there is one, will be presented after the forced UIViewController gets dismissed. It's like someone cuts to the front of the line.
 * Replace the currently shown UIViewController, if there is one, with a new UIViewController.
 * Dismiss a UIViewController and have the next one in line automatically shown next.
+* Dismiss all UIViewControllers currently in the stack of UIViewControllers shown and to be shown.
 
 All of these operations are performed with 1 line of code without running the risk of getting, `Fatal Exception: NSInvalidArgumentException Application tried to present modally an active controller ...` thrown by trying to present 2+ UIViewControllers at once.
 
 # How?
 
-Replace all of your `self.present()` function calls with `self.vcboss.present()` instead. Replace all of your `myPresentedViewController.dismiss()` with `myPresentingViewController.vcboss.dismiss(myPresentedViewController)`. Besides these, there are many more functions available to you for extended functionality:
+VCBoss uses a very familiar API.
 
-```swift
-func replace(with viewController: UIViewController, animated: Bool, completion: (() -> Void)?)
+* To present a new UIViewController modally immediately (if the presenting UIViewController is not presenting a UIViewController already) or add to the end of the stack to be presented in the future after previous UIViewControllers are dismissed by VCBoss:
 
-func presentOnlyIfNothingAlreadyShown(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?)
-
-func present(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?, force: Bool = false)
 ```
+self.vcboss.present(newViewController, animated: true, completion: nil)
+```
+
+* To dismiss a UIViewController:
+
+```
+presentedViewController.vcboss.dismiss(animated: true, completion: nil)
+```
+
+or
+
+```
+presentingViewController.vcboss.dismiss(presentedViewController, animated: true, completion: nil)
+```
+
+These are the 2 functions you are already used to using in your code. To start using VCBoss, all you need to do is replace all of your instances of `self.present()` with `self.vcboss.present()` and all instances of `viewController.dismiss()` with `viweController.vcboss.dismiss()`. Just add the extension and you're done.
+
+To make life easier, check out the section on [how to determine where you're using `self.present()`` and `viewController.dismiss()` already in your app to replace with VCBoss](#swiftlint).
+
+---
+
+Below are added functionality that UIKit does not give you that VCBoss does.
+
+* To replace the currently shown UIViewController with a new UIViewController:
+
+```
+self.vcboss.replace(with: newViewController, animated: true, completion: nil)
+```
+
+* Present a new UIViewController immediately, dismissing a UIViewController if there is one already shown and bring it back after this new UIViewController gets dismissed:
+
+```
+self.vcboss.present(newViewController, animated: true, completion: nil, force: true)
+```
+
+* Present a new UIViewController only if there is not one already presented:
+
+```
+self.vcboss.presentOnlyIfNothingAlreadyShown(newViewController, animated: true, completion: nil)
+```
+
+* Dismiss the currently shown UIViewController and do *not* show anymore that may have been added before. Clear the stack to start over.
+
+```
+self.vcboss.dismissAll(animated: true, completion: nil)
+```
+
+* If you need to get the number of UIViewControllers currently presented + UIViewControllers in stack to be shown in future after currently presented UIViewController gets dismissed:
+
+```
+self.vcboss.numViewControllersPresenting
+```
+
+[Full documentation here](https://levibostian.github.io/VCBoss/).
 
 ## Docs
 
-[Check out the docs here](https://levibostian.github.io/VCBoss/).
+[Check out the docs here](https://levibostian.github.io/VCBoss/). If something is confusing, please, [open an issue](https://github.com/levibostian/VCBoss/issues/new).
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example iOS app:
+
+* Clone the repo.
+* Run `pod install` from the `Example/` directory.
+* Run app from XCode by opening `VCBoss` workspace.
 
 ## Installation
 
-VCBoss is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+VCBoss is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'VCBoss'
@@ -58,13 +119,15 @@ pod 'VCBoss'
 
 The latest version at this time is: [![Version](https://img.shields.io/cocoapods/v/VCBoss.svg?style=flat)](http://cocoapods.org/pods/VCBoss)
 
-### SwiftLint
+# SwiftLint
 
-VCBoss *does not* work if you use `self.present()` and `self.dismiss()` to present/dismiss UIViewControllers. You must use the VCBoss class to do the presenting and dismissing. We are all human. It's easy to use your habit and use `self.present()` in your app. To help, I recommend you use [SwiftLint]() to throw errors whenever you use either of these two methods. When you try and compile your code, SwiftLint will throw an XCode error not allowing you to continue  until you fix your code.
+VCBoss *does not* work well (it tries it's best, but cannot guarantee anything) if you use `self.present()` and `self.dismiss()` to present/dismiss UIViewControllers. You must use the VCBoss class to do all of the presenting and dismissing.
+
+But, we are all human. It's easy to use your habits and use `self.present()` in your app. To help, I recommend you use [SwiftLint](https://github.com/realm/SwiftLint) to throw errors whenever you use either of these two methods. When you try and compile your code, SwiftLint will throw an XCode error not allowing you to continue until you fix your code.
 
 To use SwiftLint, all you need to do is:
 
-* [Install SwiftLint]() into your iOS project (super easy)
+* [Install SwiftLint](https://github.com/realm/SwiftLint#installation) into your iOS project (super easy. I use [this method](https://github.com/realm/SwiftLint#using-cocoapods)).
 * Add the following to your `.swiftlint.yml` file:
 
 ```

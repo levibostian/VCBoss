@@ -18,6 +18,6 @@ public extension UIViewController {
     */
     public var vcboss: VCBoss {
         return VCBossInstanceManager.shared.getBoss(self)
-    }        
+    }
     
 }
