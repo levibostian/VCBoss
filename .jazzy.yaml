@@ -1,0 +1,10 @@
+output: docs
+clean: true
+source_directory: VCBoss
+swift_version: "4.2"
+author: Levi Bostian
+author_url: https://levibostian.com
+module: VCBoss
+readme: README.md
+podspec: VCBoss.podspec
+github_url: https://github.com/levibostian/VCBoss

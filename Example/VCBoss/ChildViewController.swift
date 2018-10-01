@@ -34,56 +34,56 @@ class ChildViewController: UIViewController {
     
     fileprivate let replaceViewControllerButton: UIButton = {
         let view = UIButton()
-        view.setTitle("Replace with new ViewController", for: UIControlState.normal)
-        view.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        view.setTitle("Replace with new ViewController", for: UIControl.State.normal)
+        view.setTitleColor(UIColor.blue, for: UIControl.State.normal)
         return view
     }()
     
     fileprivate let forceAddViewControllerButton: UIButton = {
         let view = UIButton()
-        view.setTitle("Force add new ViewController", for: UIControlState.normal)
-        view.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        view.setTitle("Force add new ViewController", for: UIControl.State.normal)
+        view.setTitleColor(UIColor.blue, for: UIControl.State.normal)
         return view
     }()
     
     fileprivate let addNewViewControllerButton: UIButton = {
         let view = UIButton()
-        view.setTitle("Add new ViewController", for: UIControlState.normal)
-        view.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        view.setTitle("Add new ViewController", for: UIControl.State.normal)
+        view.setTitleColor(UIColor.blue, for: UIControl.State.normal)
         return view
     }()
     
     fileprivate let dismissViewControllerUsingParentButton: UIButton = {
         let view = UIButton()
-        view.setTitle("Dismiss current ViewController via presenting ViewController", for: UIControlState.normal)
+        view.setTitle("Dismiss current ViewController via presenting ViewController", for: UIControl.State.normal)
         view.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         view.titleLabel?.textAlignment = NSTextAlignment.center
-        view.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        view.setTitleColor(UIColor.blue, for: UIControl.State.normal)
         return view
     }()
     
     fileprivate let dismissViewControllerUsingChildButton: UIButton = {
         let view = UIButton()
-        view.setTitle("Dismiss current ViewController via presented ViewController", for: UIControlState.normal)
+        view.setTitle("Dismiss current ViewController via presented ViewController", for: UIControl.State.normal)
         view.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         view.titleLabel?.textAlignment = NSTextAlignment.center
-        view.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        view.setTitleColor(UIColor.blue, for: UIControl.State.normal)
         return view
     }()
     
     fileprivate let dismissViewControllerUsingChildButtonNotUsingVCBoss: UIButton = {
         let view = UIButton()
-        view.setTitle("Dismiss current ViewController via presented ViewController *not* using VCBoss", for: UIControlState.normal)
+        view.setTitle("Dismiss current ViewController via presented ViewController *not* using VCBoss", for: UIControl.State.normal)
         view.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         view.titleLabel?.textAlignment = NSTextAlignment.center
-        view.setTitleColor(UIColor.red, for: UIControlState.normal)
+        view.setTitleColor(UIColor.red, for: UIControl.State.normal)
         return view
     }()
     
     fileprivate let dismissAllViewControllerButton: UIButton = {
         let view = UIButton()
-        view.setTitle("Dismiss all presented ViewControllers", for: UIControlState.normal)
-        view.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        view.setTitle("Dismiss all presented ViewControllers", for: UIControl.State.normal)
+        view.setTitleColor(UIColor.blue, for: UIControl.State.normal)
         return view
     }()
     
@@ -125,13 +125,13 @@ class ChildViewController: UIViewController {
     }
     
     fileprivate func setupViews() {
-        addNewViewControllerButton.addTarget(self, action: #selector(ChildViewController.addNewViewControllerPressed(_:)), for: UIControlEvents.touchUpInside)
-        forceAddViewControllerButton.addTarget(self, action: #selector(ChildViewController.forceAddViewControllerPressed(_:)), for: UIControlEvents.touchUpInside)
-        replaceViewControllerButton.addTarget(self, action: #selector(ChildViewController.replaceViewControllerPressed(_:)), for: UIControlEvents.touchUpInside)
-        dismissViewControllerUsingParentButton.addTarget(self, action: #selector(ChildViewController.dismissViewControllerUsingParentPressed(_:)), for: UIControlEvents.touchUpInside)
-        dismissViewControllerUsingChildButton.addTarget(self, action: #selector(ChildViewController.dismissViewControllerUsingChildPressed(_:)), for: UIControlEvents.touchUpInside)
-        dismissViewControllerUsingChildButtonNotUsingVCBoss.addTarget(self, action: #selector(ChildViewController.dismissViewControllerUsingChildPressedNotUsingVCBoss(_:)), for: UIControlEvents.touchUpInside)
-        dismissAllViewControllerButton.addTarget(self, action: #selector(ChildViewController.dismissAllViewControllersPressed(_:)), for: UIControlEvents.touchUpInside)
+        addNewViewControllerButton.addTarget(self, action: #selector(ChildViewController.addNewViewControllerPressed(_:)), for: UIControl.Event.touchUpInside)
+        forceAddViewControllerButton.addTarget(self, action: #selector(ChildViewController.forceAddViewControllerPressed(_:)), for: UIControl.Event.touchUpInside)
+        replaceViewControllerButton.addTarget(self, action: #selector(ChildViewController.replaceViewControllerPressed(_:)), for: UIControl.Event.touchUpInside)
+        dismissViewControllerUsingParentButton.addTarget(self, action: #selector(ChildViewController.dismissViewControllerUsingParentPressed(_:)), for: UIControl.Event.touchUpInside)
+        dismissViewControllerUsingChildButton.addTarget(self, action: #selector(ChildViewController.dismissViewControllerUsingChildPressed(_:)), for: UIControl.Event.touchUpInside)
+        dismissViewControllerUsingChildButtonNotUsingVCBoss.addTarget(self, action: #selector(ChildViewController.dismissViewControllerUsingChildPressedNotUsingVCBoss(_:)), for: UIControl.Event.touchUpInside)
+        dismissAllViewControllerButton.addTarget(self, action: #selector(ChildViewController.dismissAllViewControllersPressed(_:)), for: UIControl.Event.touchUpInside)
     }
     
     @objc func forceAddViewControllerPressed(_ sender: Any) {

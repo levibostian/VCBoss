@@ -2,7 +2,7 @@
 
 Present UIViewControllers modally in an easy and safe way. No more `Fatal Exception: NSInvalidArgumentException Application tried to present modally an active controller ...` errors. Easily present, dismiss, replace, and swap UIViewControllers presented modally in a presenting UIViewController.
 
-![Swift 4.0.x](https://img.shields.io/badge/Swift-4.0.x-orange.svg)
+![Swift 4.2.x](https://img.shields.io/badge/Swift-4.2.x-orange.svg)
 
 ![](meta/header.jpg)
 
@@ -112,12 +112,10 @@ To run the example iOS app:
 VCBoss is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'VCBoss'
+pod 'VCBoss', '~> version-here'
 ```
 
-**Note:** I recommend appending the version of the cocoapod to the Podfile line entry like: `pod "VCBoss", '~> 0.1.0'` because this library at this time does *not* provide the guarantee of backwards compatibility. Be aware when using it the API can change at anytime. I don't want your code to break the next time you call `pod update` :).
-
-The latest version at this time is: [![Version](https://img.shields.io/cocoapods/v/VCBoss.svg?style=flat)](http://cocoapods.org/pods/VCBoss)
+Replace `version-here` with: [![Version](https://img.shields.io/cocoapods/v/VCBoss.svg?style=flat)](http://cocoapods.org/pods/VCBoss)
 
 # SwiftLint
 
