@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'VCBoss'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'Present UIViewControllers modally in an easy and safe way.'
 
 # This description is used to generate tags and improve search results.
