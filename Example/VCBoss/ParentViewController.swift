@@ -16,15 +16,15 @@ class ParentViewController: UIViewController {
     
     fileprivate let presentNewViewControllerButton: UIButton = {
         let view = UIButton()
-        view.setTitle("Present new ViewController", for: UIControlState.normal)
-        view.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        view.setTitle("Present new ViewController", for: UIControl.State.normal)
+        view.setTitleColor(UIColor.blue, for: UIControl.State.normal)
         return view
     }()
     
     fileprivate let presentNewViewControllerNotUsingVCBossButton: UIButton = {
         let view = UIButton()
-        view.setTitle("Present new ViewController *not* using VCBoss", for: UIControlState.normal)
-        view.setTitleColor(UIColor.red, for: UIControlState.normal)
+        view.setTitle("Present new ViewController *not* using VCBoss", for: UIControl.State.normal)
+        view.setTitleColor(UIColor.red, for: UIControl.State.normal)
         view.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         view.titleLabel?.textAlignment = NSTextAlignment.center
         return view
@@ -52,8 +52,8 @@ class ParentViewController: UIViewController {
     }
     
     fileprivate func setupViews() {
-        presentNewViewControllerButton.addTarget(self, action: #selector(ParentViewController.presentNewViewControllerPressed(_:)), for: UIControlEvents.touchUpInside)
-        presentNewViewControllerNotUsingVCBossButton.addTarget(self, action: #selector(ParentViewController.presentNewViewControllerNotUsingVCBossPressed(_:)), for: UIControlEvents.touchUpInside)
+        presentNewViewControllerButton.addTarget(self, action: #selector(ParentViewController.presentNewViewControllerPressed(_:)), for: UIControl.Event.touchUpInside)
+        presentNewViewControllerNotUsingVCBossButton.addTarget(self, action: #selector(ParentViewController.presentNewViewControllerNotUsingVCBossPressed(_:)), for: UIControl.Event.touchUpInside)
     }
     
     @objc func presentNewViewControllerPressed(_ sender: Any) {
@@ -88,11 +88,11 @@ class ParentViewController: UIViewController {
 extension ParentViewController: ChildViewControllerDelegate {
     
     func dismissViewControllerUsingPresentingViewController(sender: UIViewController) {
-        try! self.vcboss.dismiss(sender, animated: true, completion: nil)
+        self.vcboss.dismiss(sender, animated: true, completion: nil)
     }
     
     func dismissViewControllerUsingPresentedViewController(sender: UIViewController) {
-        try! sender.vcboss.dismiss(animated: true, completion: nil)
+        sender.vcboss.dismiss(animated: true, completion: nil)
     }
     
     func dismissViewControllerUsingPresentedViewControllerNotUsingVCBoss(sender: UIViewController) {
@@ -100,7 +100,7 @@ extension ParentViewController: ChildViewControllerDelegate {
     }
     
     func dismissAllViewControllers(sender: UIViewController) {
-        try! self.vcboss.dismissAll(animated: true, completion: nil)
+        self.vcboss.dismissAll(animated: true, completion: nil)
     }
     
     func getNumberViewControllersInStack() -> Int {
