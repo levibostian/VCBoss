@@ -88,11 +88,11 @@ class ParentViewController: UIViewController {
 extension ParentViewController: ChildViewControllerDelegate {
     
     func dismissViewControllerUsingPresentingViewController(sender: UIViewController) {
-        try! self.vcboss.dismiss(sender, animated: true, completion: nil)
+        self.vcboss.dismiss(sender, animated: true, completion: nil)
     }
     
     func dismissViewControllerUsingPresentedViewController(sender: UIViewController) {
-        try! sender.vcboss.dismiss(animated: true, completion: nil)
+        sender.vcboss.dismiss(animated: true, completion: nil)
     }
     
     func dismissViewControllerUsingPresentedViewControllerNotUsingVCBoss(sender: UIViewController) {
@@ -100,7 +100,7 @@ extension ParentViewController: ChildViewControllerDelegate {
     }
     
     func dismissAllViewControllers(sender: UIViewController) {
-        try! self.vcboss.dismissAll(animated: true, completion: nil)
+        self.vcboss.dismissAll(animated: true, completion: nil)
     }
     
     func getNumberViewControllersInStack() -> Int {

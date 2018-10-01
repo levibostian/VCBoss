@@ -8,29 +8,6 @@
 import Foundation
 
 /**
- Errors that VCBoss can throw.
- */
-public enum VCBossError: Error, LocalizedError {
-    /**
-     If you try to dismiss a UIViewController that was never presented using VCBoss. You either forgot to present it, or you used `self.present()` instead of `self.vcboss.present()` to present the UIViewController.
-    */
-    case dismissViewControllerNeverPresented
-    /**
-     If you try to dismiss a UIViewController that was not presented modally, this error is thrown. This UIViewController does not have an instance of `presentingViewController`.
-     */
-    case dismissViewControllerNotPresentedModally
-    
-    public var errorDescription: String? {
-        switch self {
-        case .dismissViewControllerNeverPresented:
-            return NSLocalizedString("ViewController was never presented. Cannot dismiss it.", comment: "")
-        case .dismissViewControllerNotPresentedModally:
-            return NSLocalizedString("ViewController was not presented modally. Cannot dismiss it.", comment: "")
-        }
-    }
-}
-
-/**
  Class used by a UIViewController to manage presenting and dismissing of UIViewControllers in a safe way. iOS throws errors if you try to call `self.present()` inside of a UIViewController when another UIViewController is already being shown. Replace all of your existing `self.present()` calls with using VCBoss and be safe knowing only 1 ViewController will be shown at a time.
  
  Note: This class *does not* know about any UIViewControllers that you have already shown in it with `self.present()`. Make sure to place *all* existing `self.present()` calls with using VCBoss to assert you will not have any issues.
@@ -145,9 +122,9 @@ public class VCBoss {
         }
     }
     
-    fileprivate func dismissWithoutPresentingNextInQueue(_ viewController: UIViewController, animated: Bool, dismissCompletion: (() -> Void)? = nil) throws {
+    fileprivate func dismissWithoutPresentingNextInQueue(_ viewController: UIViewController, animated: Bool, dismissCompletion: (() -> Void)? = nil) {
         guard let queueItem = self.queueViewControllersPresenting.peek(for: viewController) else {
-            throw VCBossError.dismissViewControllerNeverPresented
+            fatalError("ViewController was never presented. Cannot dismiss it.")
         }
         if self.queueViewControllersPresenting.isFirst(queueItem.viewControllerToPresent) {
             queueItem.viewControllerToPresent.dismiss(animated: animated) {
@@ -170,7 +147,7 @@ public class VCBoss {
      
      If the viewController was never actually presented, an error will be thrown.
      */
-    public func dismiss(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) throws {
+    public func dismiss(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
         if viewController.hashValue == self.viewController?.hashValue {
             fatalError("You cannot dismiss yourself using VCBoss. You need to dismiss a UIViewController that your parent UIViewController presented.")
         }
@@ -218,7 +195,7 @@ public class VCBoss {
     /**
      Dismiss the currently presented UIViewController and do not present anymore. Clear the stack to start over again.
     */
-    public func dismissAll(animated: Bool, completion: (() -> Void)?) throws {
+    public func dismissAll(animated: Bool, completion: (() -> Void)?) {
         syncQueueWithPresentingViewController()
         
         if let currentlyShownViewController = self.queueViewControllersPresenting.peek() {
@@ -234,9 +211,9 @@ public class VCBoss {
      
      This method exists to be backwards compatible with UIKit.
      */
-    public func dismiss(animated: Bool, completion: (() -> Void)?) throws {
+    public func dismiss(animated: Bool, completion: (() -> Void)?) {
         guard let parentViewController = self.viewController, let presentingViewController = self.viewController?.presentingViewController else {
-            throw VCBossError.dismissViewControllerNotPresentedModally
+            fatalError("ViewController was not presented modally. Cannot dismiss it.")
         }
         
         let presentingViewControllerVCBoss = VCBossInstanceManager.shared.getBoss(presentingViewController)

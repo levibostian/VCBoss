@@ -1,39 +1,23 @@
 PODS:
-  - FBSnapshotTestCase (2.1.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
-  - FBSnapshotTestCase/Core (2.1.4)
-  - FBSnapshotTestCase/SwiftSupport (2.1.4):
-    - FBSnapshotTestCase/Core
-  - Nimble (7.0.2)
-  - Nimble-Snapshots (6.3.0):
-    - Nimble-Snapshots/Core (= 6.3.0)
-  - Nimble-Snapshots/Core (6.3.0):
-    - FBSnapshotTestCase (~> 2.0)
-    - Nimble (~> 7.0)
-  - Quick (1.2.0)
   - SnapKit (4.0.0)
   - VCBoss (0.1.0)
 
 DEPENDENCIES:
-  - FBSnapshotTestCase (~> 2.1.4)
-  - Nimble (~> 7.0.2)
-  - Nimble-Snapshots (~> 6.3.0)
-  - Quick (~> 1.2.0)
   - SnapKit (~> 4.0.0)
   - VCBoss (from `../`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SnapKit
+
 EXTERNAL SOURCES:
   VCBoss:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
-  Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  VCBoss: c5c4c6ccf835b6280a4f8e6820bf4b57b70fa1c8
+  VCBoss: 4257ba026c376ae0e0c0fdef86216e460e028937
 
-PODFILE CHECKSUM: 7ca1963761a8f2299cc417b8cce9a13913eab327
+PODFILE CHECKSUM: 53c003623e06337e41fb30bc27406df23df5521f
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3
